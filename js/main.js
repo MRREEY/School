@@ -1,12 +1,37 @@
 //
 // vis element
 //
-let fish = document.getElementsByTagName("fish")[0]
-fish.style.transform = "translate(200px, 100px)"
-fish.style.filter = "hue-rotate(200deg)"
+function randomPosition(direction){
+    return Math.floor(Math.random() * 100) + direction;
+}
+
+
+function createFish(){
+    let fish = document.createElement("fish");
+    document.body.appendChild(fish);
+
+    let x = randomPosition("vw");
+    let y = randomPosition("vh");
+    fish.style.transform = `translate(${x}, ${y})`;
+
+    let randomHue = Math.random() * (360 - 1) + 1;
+    fish.style.filter = `hue-rotate(${randomHue}deg)`;
+}
+
 
 //
 // bubble element
 //
-let bubble = document.getElementsByTagName("bubble")[0]
-bubble.style.transform = "translate(20vw, 100vh)"
+function createBubble(){
+    let bubble = document.createElement("bubble");
+    document.body.appendChild(bubble);
+
+    let x = randomPosition("vw");
+    let y = randomPosition("vh");
+    bubble.style.transform = `translate(${x}, ${y})`;
+}
+
+for (let i=0; i<100; i++){
+    createBubble();
+    createFish();
+}
